@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+}
+
+group 'io.github.aluria'
+version '1.0-SNAPSHOT'
+
+subprojects {
+    afterEvaluate {
+        apply plugin: 'java'
+
+        dependencies {
+            if(project.name != 'common-shared') {
+                implementation project(':common-shared')
+            }
+
+            implementation 'org.twitter4j:twitter4j-async:4.0.7'
+
+            compileOnly 'org.projectlombok:lombok:1.18.10'
+            annotationProcessor 'org.projectlombok:lombok:1.18.10'
+        }
+
+        repositories {
+            mavenLocal()
+            mavenCentral()
+
+            maven { url 'https://jitpack.io' }
+        }
+
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+
+    tasks.withType(Jar) {
+        destinationDirectory.set(file("$rootDir/target/"))
+
+        println(destinationDirectory)
+    }
+
+}

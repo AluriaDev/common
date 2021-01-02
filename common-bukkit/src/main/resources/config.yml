@@ -1,0 +1,4 @@
+# Twitter developer app https://developer.twitter.com/en/docs/apps/overview
+twitter:
+  oauth_token: ''
+  oauth_token_secret: ''
