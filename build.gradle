@@ -25,6 +25,7 @@ subprojects {
             mavenCentral()
 
             maven { url 'https://jitpack.io' }
+            maven { url = "https://repo.aikar.co/content/groups/aikar/" }
         }
 
     }
