@@ -1,18 +1,17 @@
 package io.github.aluria.common.commands;
 
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.Default;
 import io.github.aluria.common.Constants;
-import net.md_5.bungee.api.CommandSender;
-import net.md_5.bungee.api.plugin.Command;
+import net.md_5.bungee.api.connection.ProxiedPlayer;
 
-public class WebsiteCommand extends Command {
+@CommandAlias("website|site")
+public class WebsiteCommand extends BaseCommand {
 
-    public WebsiteCommand() {
-        super("website", "", "site");
-    }
-
-    @Override
-    public void execute(CommandSender sender, String[] args) {
-        sender.sendMessages(
+    @Default
+    public void handleWebsiteCommand(ProxiedPlayer player) {
+        player.sendMessages(
           " ",
           " §6§lALURIA",
           " §fAjude o servidor a se manter online fazendo",

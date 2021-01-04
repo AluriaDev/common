@@ -3,7 +3,6 @@ package io.github.aluria.common;
 import co.aikar.commands.BukkitCommandManager;
 import co.aikar.commands.BukkitLocales;
 import co.aikar.commands.MessageType;
-import io.github.aluria.common.entities.User;
 import io.github.aluria.common.listeners.ConnectionListener;
 import io.github.aluria.common.registries.UserRegistry;
 import io.github.aluria.common.utils.CommonPlugin;
@@ -39,11 +38,6 @@ public class BukkitCommonPlugin extends CommonPlugin {
 
     private void startCommandManager() {
         final BukkitCommandManager manager = new BukkitCommandManager(this);
-        manager.getCommandContexts().registerContext(
-          User.class,
-          context -> userRegistry.getUserById(context.getPlayer().getUniqueId())
-        );
-
         manager.registerDependency(UserRegistry.class, userRegistry);
 
         manager.setFormat(MessageType.INFO, ChatColor.GREEN);
@@ -54,6 +48,5 @@ public class BukkitCommonPlugin extends CommonPlugin {
         final BukkitLocales locales = manager.getLocales();
         locales.setDefaultLocale(locale);
         locales.addMessageBundle(getClassLoader(), "messages", locale);
-
     }
 }
