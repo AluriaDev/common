@@ -1,21 +1,26 @@
-package io.github.aluria.common.utils.sql.provider;
+package io.github.aluria.common.sql.provider;
 
 
-import io.github.aluria.common.utils.sql.function.SqlFunction;
-import io.github.aluria.common.utils.sql.mapper.SqlEntryMapper;
+import io.github.aluria.common.sql.function.SqlFunction;
+import io.github.aluria.common.sql.mapper.SqlEntryMapper;
+import lombok.Getter;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class ConnectionProvider {
-	
+
+	@Getter
+	private final Properties properties;
+
+	public ConnectionProvider(Properties properties) {
+		this.properties = properties;
+	}
+
 	public abstract Connection getCurrentConnection();
 	
 	public boolean execute(String sql, Object... statementValues) {

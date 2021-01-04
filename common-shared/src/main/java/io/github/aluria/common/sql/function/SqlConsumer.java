@@ -1,4 +1,4 @@
-package io.github.aluria.common.utils.sql.function;
+package io.github.aluria.common.sql.function;
 
 import java.sql.SQLException;
 import java.util.function.Consumer;

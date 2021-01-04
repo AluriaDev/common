@@ -14,7 +14,7 @@ subprojects {
                 implementation project(':common-shared')
             }
 
-            implementation 'org.twitter4j:twitter4j-async:4.0.7'
+            implementation 'com.zaxxer:HikariCP:3.4.5'
 
             compileOnly 'org.projectlombok:lombok:1.18.10'
             annotationProcessor 'org.projectlombok:lombok:1.18.10'

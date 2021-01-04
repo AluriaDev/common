@@ -1,26 +1,22 @@
-package io.github.aluria.common.utils.sql.provider.sqlite;
+package io.github.aluria.common.sql.provider.sqlite;
 
-import io.github.aluria.common.utils.sql.provider.ConnectionProvider;
+import io.github.aluria.common.sql.provider.ConnectionProvider;
 import lombok.SneakyThrows;
-import org.bukkit.plugin.Plugin;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.Properties;
 
 public final class SQLiteConnectionProvider extends ConnectionProvider {
 	
 	private static final String SQLITE_URL_FILE_MODEL = "jdbc:sqlite:";
-	
-	private Plugin plugin;
-	private String databaseName;
-	
+
 	protected Connection cachedConnection;
 	
-	public SQLiteConnectionProvider(Plugin plugin, String databaseName) {
-		this.plugin = plugin;
-		this.databaseName = databaseName;
+	public SQLiteConnectionProvider(Properties properties) {
+		super(properties);
 	}
 	
 	@SneakyThrows
@@ -40,7 +36,6 @@ public final class SQLiteConnectionProvider extends ConnectionProvider {
 	
 	private Connection connect() {
 		try {
-			// pqp bukkit vsf
 			Class.forName("org.sqlite.JDBC");
 			
 			File file = this.getDatabaseFile();
@@ -53,12 +48,12 @@ public final class SQLiteConnectionProvider extends ConnectionProvider {
 	}
 	
 	private File getDatabaseFile() throws IOException {
-		String fileName = databaseName;
+		String fileName = getProperties().getProperty("database");
 		if (!fileName.endsWith(".db")) {
 			fileName += ".db";
 		}
 		
-		File mainDir = plugin.getDataFolder();
+		File mainDir = new File(getProperties().getProperty("dir"));
 		mainDir.mkdirs();
 		
 		File file = new File(mainDir, fileName);

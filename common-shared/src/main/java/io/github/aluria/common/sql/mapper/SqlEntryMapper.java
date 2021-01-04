@@ -1,6 +1,6 @@
-package io.github.aluria.common.utils.sql.mapper;
+package io.github.aluria.common.sql.mapper;
 
-import io.github.aluria.common.utils.sql.function.SqlFunction;
+import io.github.aluria.common.sql.function.SqlFunction;
 import lombok.Builder;
 import lombok.Getter;
 

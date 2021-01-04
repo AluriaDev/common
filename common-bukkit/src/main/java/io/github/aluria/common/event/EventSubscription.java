@@ -86,7 +86,7 @@ public class EventSubscription<E extends Event> {
     Bukkit.getPluginManager().registerEvent(clazz, executor, priority, executor, plugin, ignoreCancelled);
   }
 
-  private class EventListenerExecutor<I extends Event> implements Listener, EventExecutor {
+  private static class EventListenerExecutor<I extends Event> implements Listener, EventExecutor {
 
     private EventSubscription<I> builder;
 

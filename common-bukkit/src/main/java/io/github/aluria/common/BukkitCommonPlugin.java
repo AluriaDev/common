@@ -5,11 +5,14 @@ import co.aikar.commands.BukkitLocales;
 import co.aikar.commands.MessageType;
 import io.github.aluria.common.listeners.ConnectionListener;
 import io.github.aluria.common.registries.UserRegistry;
+import io.github.aluria.common.sql.provider.mysql.HikariConnectionProvider;
 import io.github.aluria.common.utils.CommonPlugin;
+import io.github.aluria.common.utils.PropertiesBuilder;
 import lombok.Getter;
 import org.bukkit.ChatColor;
 
 import java.util.Locale;
+import java.util.Properties;
 
 public class BukkitCommonPlugin extends CommonPlugin {
 
@@ -20,11 +23,18 @@ public class BukkitCommonPlugin extends CommonPlugin {
     @Getter
     private UserRegistry userRegistry;
 
+    @Getter
+    private HikariConnectionProvider connectionProvider;
+
     @Override
     public void onLoad() {
         this.saveDefaultConfig();
 
         this.userRegistry = new UserRegistry();
+
+        this.connectionProvider = new HikariConnectionProvider(
+          read(getConfig().getConfigurationSection("database"))
+        );
     }
 
     @Override
