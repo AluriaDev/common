@@ -1,31 +1,26 @@
 plugins {
     id 'java'
+    id 'maven'
 }
 
-group 'io.github.aluria'
+group 'io.github.aluria.common'
 version '1.0-SNAPSHOT'
 
-subprojects {
+allprojects {
     afterEvaluate {
-        apply plugin: 'java'
-
-        dependencies {
-            if(project.name != 'common-shared') {
-                implementation project(':common-shared')
-            }
-
-            implementation 'com.zaxxer:HikariCP:3.4.5'
-
-            compileOnly 'org.projectlombok:lombok:1.18.10'
-            annotationProcessor 'org.projectlombok:lombok:1.18.10'
-        }
-
         repositories {
             mavenLocal()
             mavenCentral()
 
             maven { url 'https://jitpack.io' }
             maven { url = "https://repo.aikar.co/content/groups/aikar/" }
+        }
+
+        dependencies {
+            implementation 'com.zaxxer:HikariCP:3.4.5'
+
+            compileOnly 'org.projectlombok:lombok:1.18.16'
+            annotationProcessor 'org.projectlombok:lombok:1.18.16'
         }
 
     }
@@ -39,5 +34,4 @@ subprojects {
 
         println(destinationDirectory)
     }
-
 }
