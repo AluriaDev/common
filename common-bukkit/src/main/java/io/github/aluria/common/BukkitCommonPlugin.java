@@ -31,9 +31,9 @@ public class BukkitCommonPlugin extends CommonPlugin {
         this.userRegistry = new UserRegistry();
 
         hikariConnectionProvider = new HikariConnectionProvider();
-        hikariConnectionProvider.connect(
+        /*hikariConnectionProvider.connect(
           read(getConfig().getConfigurationSection("database"))
-        );
+        );*/
     }
 
     @Override

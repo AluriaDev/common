@@ -1,6 +1,5 @@
 package io.github.aluria.common.menu.action;
 
-import io.github.aluria.common.menu.Menu;
 import io.github.aluria.common.menu.MenuHolder;
 import org.bukkit.event.inventory.InventoryEvent;
 

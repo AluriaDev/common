@@ -1,11 +1,13 @@
 package io.github.aluria.common.utils;
 
+import lombok.NonNull;
 import net.minecraft.server.v1_8_R3.NBTTagCompound;
 import org.bukkit.Bukkit;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_8_R3.inventory.CraftItemStack;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkEffectMeta;
@@ -35,18 +37,38 @@ public class ItemBuilder {
     }
 
     public ItemBuilder(Material material, byte durability) {
-        this(material, 0, 1);
+        this(material, 1, durability);
     }
 
     public ItemBuilder(Material material, int amount) {
-        this(material, 0, amount);
+        this(material, amount, 0);
     }
 
-    public ItemBuilder(Material material, int durability, int amount) {
+    public ItemBuilder(Material material, int amount, int durability) {
         this.material = material;
         this.amount = amount;
         this.durability = (short) durability;
         this.meta = Bukkit.getItemFactory().getItemMeta(material);
+    }
+
+    public static ItemBuilder of() {
+        return new ItemBuilder();
+    }
+
+    public static ItemBuilder of(Material material) {
+        return new ItemBuilder(material);
+    }
+
+    public static ItemBuilder of(Material material, int amount) {
+        return new ItemBuilder(material, amount);
+    }
+
+    public static ItemBuilder of(Material material, byte durability) {
+        return new ItemBuilder(material, durability);
+    }
+
+    public static ItemBuilder of(Material material, int amount, int durability) {
+        return new ItemBuilder(material, amount, durability);
     }
 
     public NBTTagCompound getCompound() {

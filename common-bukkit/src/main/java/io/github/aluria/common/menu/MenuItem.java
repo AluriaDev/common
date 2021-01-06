@@ -3,6 +3,8 @@ package io.github.aluria.common.menu;
 import io.github.aluria.common.menu.action.ClickAction;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.bukkit.Sound;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 @Getter
@@ -27,5 +29,26 @@ public class MenuItem {
         }
 
         return this;
+    }
+
+    public MenuItem soundOnClick(Sound sound, float v, float v1) {
+        return withAction((holder, event) -> {
+            Player whoClicked = (Player) event.getWhoClicked();
+            whoClicked.playSound(whoClicked.getLocation(), sound, v, v1);
+        });
+    }
+
+    public MenuItem messagesOnClick(String... messages) {
+        return withAction((holder, event) -> {
+            Player whoClicked = (Player) event.getWhoClicked();
+            whoClicked.sendMessage(messages);
+        });
+    }
+
+    public MenuItem closeOnClick() {
+        return withAction((holder, event) -> {
+            Player whoClicked = (Player) event.getWhoClicked();
+            whoClicked.closeInventory();
+        });
     }
 }
