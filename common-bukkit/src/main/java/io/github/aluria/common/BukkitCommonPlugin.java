@@ -3,9 +3,10 @@ package io.github.aluria.common;
 import co.aikar.commands.BukkitCommandManager;
 import co.aikar.commands.BukkitLocales;
 import co.aikar.commands.MessageType;
+import io.github.aluria.common.database.provider.sql.HikariConnectionProvider;
 import io.github.aluria.common.listeners.ConnectionListener;
+import io.github.aluria.common.menu.MenuListener;
 import io.github.aluria.common.registries.UserRegistry;
-import io.github.aluria.common.sql.provider.mysql.HikariConnectionProvider;
 import io.github.aluria.common.utils.CommonPlugin;
 import lombok.Getter;
 import org.bukkit.ChatColor;
@@ -17,7 +18,7 @@ public class BukkitCommonPlugin extends CommonPlugin {
     @Getter
     private UserRegistry userRegistry;
     @Getter
-    private HikariConnectionProvider connectionProvider;
+    private HikariConnectionProvider hikariConnectionProvider;
 
     public static BukkitCommonPlugin getInstance() {
         return getPlugin(BukkitCommonPlugin.class);
@@ -29,7 +30,8 @@ public class BukkitCommonPlugin extends CommonPlugin {
 
         this.userRegistry = new UserRegistry();
 
-        this.connectionProvider = new HikariConnectionProvider(
+        hikariConnectionProvider = new HikariConnectionProvider();
+        hikariConnectionProvider.connect(
           read(getConfig().getConfigurationSection("database"))
         );
     }
@@ -37,7 +39,8 @@ public class BukkitCommonPlugin extends CommonPlugin {
     @Override
     public void onEnable() {
         this.registerListeners(
-          new ConnectionListener(this)
+          new ConnectionListener(this),
+          new MenuListener()
         );
 
         this.startCommandManager();
