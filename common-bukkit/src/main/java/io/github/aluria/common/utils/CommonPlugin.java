@@ -29,7 +29,7 @@ public class CommonPlugin extends JavaPlugin {
 
         for (String key : section.getKeys(false)) {
             final String value = section.getString(key);
-            if(value == null) continue;
+            if (value == null) continue;
 
             properties.put(key, value);
         }

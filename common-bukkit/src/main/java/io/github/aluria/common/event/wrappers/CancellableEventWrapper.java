@@ -6,8 +6,8 @@ import org.bukkit.event.Cancellable;
 
 public class CancellableEventWrapper extends EventWrapper implements Cancellable {
 
-  @Setter
-  @Getter
-  private boolean cancelled;
+    @Setter
+    @Getter
+    private boolean cancelled;
 
 }

@@ -21,7 +21,7 @@ public class HikariConnectionProvider extends ConnectionProvider {
 
     @Override
     public Connection getCurrentConnection() {
-        if(dataSource == null) {
+        if (dataSource == null) {
             this.connect();
         }
 
@@ -34,7 +34,7 @@ public class HikariConnectionProvider extends ConnectionProvider {
     }
 
     private void connect() {
-        if(dataSource != null) throw new UnsupportedOperationException("DataSource already connected");
+        if (dataSource != null) throw new UnsupportedOperationException("DataSource already connected");
 
         final HikariConfig config = new HikariConfig();
 
