@@ -8,6 +8,8 @@ version '1.0-SNAPSHOT'
 
 allprojects {
     afterEvaluate {
+        sourceCompatibility = 1.8
+
         repositories {
             mavenLocal()
             mavenCentral()
