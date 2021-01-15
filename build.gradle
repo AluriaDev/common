@@ -3,19 +3,22 @@ plugins {
     id 'maven'
 }
 
-group 'io.github.aluria.common'
-version '1.0.1-SNAPSHOT'
+def projectGroup = 'io.github.aluria.common'
+def projectVersion = '1.2.0-SNAPSHOT'
+
+group projectGroup
+version projectVersion
+sourceCompatibility = 1.8
 
 allprojects {
+    group projectGroup
+    version projectVersion
     afterEvaluate {
-        sourceCompatibility = 1.8
-
         repositories {
             mavenLocal()
             mavenCentral()
-
             maven { url 'https://jitpack.io' }
-            maven { url = "https://repo.aikar.co/content/groups/aikar/" }
+            maven { url "https://repo.aikar.co/content/groups/aikar/" }
         }
 
         dependencies {
@@ -32,7 +35,7 @@ allprojects {
     }
 
     tasks.withType(Jar) {
-        destinationDirectory.set(file("$rootDir/target/"))
+        destinationDirectory.set(file("$rootDir/build/"))
 
         println(destinationDirectory)
     }

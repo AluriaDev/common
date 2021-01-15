@@ -45,7 +45,7 @@ public class MenuHolder implements InventoryHolder {
         final Inventory inventory = Bukkit.createInventory(this, menu.getSize(), menu.getTitle());
 
         for (MenuItem item : items) {
-            if(item == null) continue;
+            if (item == null) continue;
 
             inventory.setItem(item.getSlot(), item.getItem());
         }
@@ -60,16 +60,16 @@ public class MenuHolder implements InventoryHolder {
         final int slot = event.getRawSlot();
 
         final MenuItem item = items[slot];
-        if(item == null) return;
+        if (item == null) return;
 
         item.getAction().run(this, event);
     }
 
     protected final void handleOpen(InventoryOpenEvent event) {
-        if(menu.getOpenAction() != null) menu.getOpenAction().run(this, event);
+        if (menu.getOpenAction() != null) menu.getOpenAction().run(this, event);
     }
 
     protected final void handleClose(InventoryCloseEvent event) {
-        if(menu.getCloseAction() != null) menu.getCloseAction().run(this, event);
+        if (menu.getCloseAction() != null) menu.getCloseAction().run(this, event);
     }
 }

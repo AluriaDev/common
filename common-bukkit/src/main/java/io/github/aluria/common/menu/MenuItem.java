@@ -22,7 +22,7 @@ public class MenuItem {
     }
 
     public MenuItem withAction(ClickAction action) {
-        if(this.action == null) {
+        if (this.action == null) {
             this.action = action;
         } else {
             this.action.and(action);

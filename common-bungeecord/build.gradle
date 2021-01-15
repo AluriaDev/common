@@ -5,8 +5,8 @@ plugins {
     id 'maven'
 }
 
-group 'io.github.aluria.common'
-version '1.0.1-SNAPSHOT'
+//group 'io.github.aluria.common'
+//version '1.0.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -14,8 +14,8 @@ repositories {
 }
 
 dependencies {
+    compileOnly 'net.md-5:bungeecord-api:1.16-R0.4-SNAPSHOT'
     implementation 'co.aikar:acf-bungee:0.5.0-SNAPSHOT'
-    compileOnly 'net.md-5:bungeecord-api:1.8-SNAPSHOT'
     implementation project(':common-shared')
     api project(':common-shared')
 }

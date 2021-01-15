@@ -10,61 +10,61 @@ import java.util.function.Function;
 
 public class Lore implements Cloneable {
 
-  private String[] content;
+    private String[] content;
 
-  public static Lore of(String... content) {
-    return new Lore(content);
-  }
-
-  private Lore(String[] content) {
-    this.content = content;
-  }
-
-  public Lore addLines(String... lines) {
-    content = ArrayUtils.addAll(content, lines);
-    return this;
-  }
-
-  public Lore transform(Function<String, String> transformer) {
-    for (int i = 0; i < content.length; i++) {
-      content[i] = transformer.apply(content[i]);
+    private Lore(String[] content) {
+        this.content = content;
     }
-    return this;
-  }
 
-  public Lore colorize() {
-    return transform(this::colorize);
-  }
+    public static Lore of(String... content) {
+        return new Lore(content);
+    }
 
-  public Lore replace(String placeHolder, String valueString) {
-    return transform(line -> line.replace(placeHolder, valueString));
-  }
+    public Lore addLines(String... lines) {
+        content = ArrayUtils.addAll(content, lines);
+        return this;
+    }
 
-  public Lore space(int startSpace, int endSpace) {
-    String startSpaceLabel = Strings.repeat(" ", startSpace);
-    String endSpaceLabel = Strings.repeat(" ", endSpace);
+    public Lore transform(Function<String, String> transformer) {
+        for (int i = 0; i < content.length; i++) {
+            content[i] = transformer.apply(content[i]);
+        }
+        return this;
+    }
 
-    return transform(line -> startSpaceLabel + line + endSpaceLabel);
-  }
+    public Lore colorize() {
+        return transform(this::colorize);
+    }
 
-  public Lore replace(String placeHolder, Object object) {
-    return replace(placeHolder, String.valueOf(object));
-  }
+    public Lore replace(String placeHolder, String valueString) {
+        return transform(line -> line.replace(placeHolder, valueString));
+    }
 
-  public List<String> toList() {
-    return Arrays.asList(content);
-  }
+    public Lore space(int startSpace, int endSpace) {
+        String startSpaceLabel = Strings.repeat(" ", startSpace);
+        String endSpaceLabel = Strings.repeat(" ", endSpace);
 
-  public String[] toArray() {
-    return content;
-  }
+        return transform(line -> startSpaceLabel + line + endSpaceLabel);
+    }
 
-  protected String colorize(String input) {
-    return ChatColor.translateAlternateColorCodes('&', input);
-  }
+    public Lore replace(String placeHolder, Object object) {
+        return replace(placeHolder, String.valueOf(object));
+    }
 
-  @Override
-  public Lore clone() {
-    return new Lore(content);
-  }
+    public List<String> toList() {
+        return Arrays.asList(content);
+    }
+
+    public String[] toArray() {
+        return content;
+    }
+
+    protected String colorize(String input) {
+        return ChatColor.translateAlternateColorCodes('&', input);
+    }
+
+    @Override
+    public Lore clone() {
+        return new Lore(content);
+    }
 }

@@ -38,7 +38,7 @@ public final class SQLiteConnectionProvider implements SQLConnectionProvider {
 
     @Override
     public void disconnect() {
-        if(isRunning()) {
+        if (isRunning()) {
             try {
                 connection.close();
             } catch (SQLException e) {

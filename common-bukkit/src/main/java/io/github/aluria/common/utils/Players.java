@@ -13,33 +13,33 @@ import java.util.stream.Collectors;
 @UtilityClass
 public class Players {
 
-  public static List<Player> selectPlayersWithFilter(Predicate<Player> predicate){
-    return Bukkit.getOnlinePlayers()
-      .parallelStream()
-      .filter(predicate)
-      .collect(Collectors.toList());
-  }
+    public static List<Player> selectPlayersWithFilter(Predicate<Player> predicate) {
+        return Bukkit.getOnlinePlayers()
+          .parallelStream()
+          .filter(predicate)
+          .collect(Collectors.toList());
+    }
 
-  @Nullable
-  public OfflinePlayer getOfflinePlayer(String playerName) {
-    for (OfflinePlayer it : Bukkit.getOfflinePlayers()) {
-      if (it != null) {
-        if (it.getName().equalsIgnoreCase(playerName)) {
-          return it;
+    @Nullable
+    public OfflinePlayer getOfflinePlayer(String playerName) {
+        for (OfflinePlayer it : Bukkit.getOfflinePlayers()) {
+            if (it != null) {
+                if (it.getName().equalsIgnoreCase(playerName)) {
+                    return it;
+                }
+            }
         }
-      }
-    }
-    return null;
-  }
-
-  @Nullable
-  public Player getPlayerFromName(String playerName) {
-    for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-      if (onlinePlayer.getName().equalsIgnoreCase(playerName)) {
-        return onlinePlayer;
-      }
+        return null;
     }
 
-    return null;
-  }
+    @Nullable
+    public Player getPlayerFromName(String playerName) {
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            if (onlinePlayer.getName().equalsIgnoreCase(playerName)) {
+                return onlinePlayer;
+            }
+        }
+
+        return null;
+    }
 }
