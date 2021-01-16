@@ -3,5 +3,5 @@ plugins {
     id 'maven'
 }
 
-group 'io.github.aluria.common'
-version '1.12-SNAPSHOT'
+//group 'io.github.aluria.common'
+//version '1.12-SNAPSHOT'

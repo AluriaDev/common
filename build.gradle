@@ -3,13 +3,18 @@ plugins {
     id 'maven'
 }
 
-group 'io.github.aluria.common'
-version '1.12-SNAPSHOT'
+def projectGroup = 'io.github.aluria.common'
+def projectVersion = '1.12-SNAPSHOT'
+
+group projectGroup
+version projectVersion
+sourceCompatibility = 1.8
 
 allprojects {
-    afterEvaluate {
-        sourceCompatibility = 1.8
+    group = projectGroup
+    version = projectVersion
 
+    afterEvaluate {
         repositories {
             mavenLocal()
             mavenCentral()
@@ -32,7 +37,7 @@ allprojects {
     }
 
     tasks.withType(Jar) {
-        destinationDirectory.set(file("$rootDir/target/"))
+        destinationDirectory.set(file("$rootDir/build/"))
 
         println(destinationDirectory)
     }
