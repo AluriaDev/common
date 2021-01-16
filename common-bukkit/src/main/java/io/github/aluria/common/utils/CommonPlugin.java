@@ -2,7 +2,7 @@ package io.github.aluria.common.utils;
 
 import org.bukkit.command.Command;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.craftbukkit.v1_8_R3.CraftServer;
+import org.bukkit.craftbukkit.v1_12_R1.CraftServer;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;

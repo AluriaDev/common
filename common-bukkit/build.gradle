@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'io.github.aluria.common'
-version '1.0.1-SNAPSHOT'
+version '1.12-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     implementation 'co.aikar:acf-bukkit:0.5.0-SNAPSHOT'
-    compileOnly 'org.spigotmc:spigot:1.8.8-R0.1-SNAPSHOT'
+    compileOnly 'org.spigotmc:spigot:1.12.2-R0.1-SNAPSHOT'
 
     implementation project(':common-shared')
     api project(':common-shared')
