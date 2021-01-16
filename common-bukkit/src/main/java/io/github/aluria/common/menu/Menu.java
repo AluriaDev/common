@@ -43,7 +43,8 @@ public class Menu {
         return menuItem;
     }
 
-    protected void render(Player player, MenuHolder holder) { }
+    protected void render(Player player, MenuHolder holder) {
+    }
 
     public final MenuHolder show(Player player) {
         final MenuHolder holder = new MenuHolder(this);

@@ -13,7 +13,7 @@ public class MenuListener implements Listener {
     public void onInventoryClick(InventoryClickEvent event) {
         final Inventory inventory = event.getInventory();
 
-        if(inventory.getHolder() instanceof MenuHolder)
+        if (inventory.getHolder() instanceof MenuHolder)
             ((MenuHolder) (inventory.getHolder())).handleClick(event);
     }
 
@@ -21,7 +21,7 @@ public class MenuListener implements Listener {
     public void onInventoryClose(InventoryCloseEvent event) {
         final Inventory inventory = event.getInventory();
 
-        if(inventory.getHolder() instanceof MenuHolder)
+        if (inventory.getHolder() instanceof MenuHolder)
             ((MenuHolder) (inventory.getHolder())).handleClose(event);
     }
 
@@ -29,7 +29,7 @@ public class MenuListener implements Listener {
     public void onInventoryOpen(InventoryOpenEvent event) {
         final Inventory inventory = event.getInventory();
 
-        if(inventory.getHolder() instanceof MenuHolder)
+        if (inventory.getHolder() instanceof MenuHolder)
             ((MenuHolder) (inventory.getHolder())).handleOpen(event);
     }
 }
