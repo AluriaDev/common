@@ -5,14 +5,16 @@ plugins {
 
 def projectGroup = 'io.github.aluria.common'
 def projectVersion = '1.12-SNAPSHOT'
+def projectSourceCompatibility = 1.8
 
 group projectGroup
 version projectVersion
-sourceCompatibility = 1.8
+sourceCompatibility = projectSourceCompatibility
 
 allprojects {
     group = projectGroup
     version = projectVersion
+    sourceCompatibility = projectSourceCompatibility
 
     afterEvaluate {
         repositories {

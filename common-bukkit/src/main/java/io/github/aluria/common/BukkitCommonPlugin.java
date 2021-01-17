@@ -20,6 +20,7 @@ public class BukkitCommonPlugin extends CommonPlugin {
     @Getter
     private HikariConnectionProvider hikariConnectionProvider;
 
+
     public static BukkitCommonPlugin getInstance() {
         return getPlugin(BukkitCommonPlugin.class);
     }
