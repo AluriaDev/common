@@ -13,13 +13,11 @@ import org.bukkit.ChatColor;
 
 import java.util.Locale;
 
+@Getter
 public class BukkitCommonPlugin extends CommonPlugin {
 
-    @Getter
-    private UserRegistry userRegistry;
-    @Getter
     private HikariConnectionProvider hikariConnectionProvider;
-
+    private UserRegistry userRegistry;
 
     public static BukkitCommonPlugin getInstance() {
         return getPlugin(BukkitCommonPlugin.class);

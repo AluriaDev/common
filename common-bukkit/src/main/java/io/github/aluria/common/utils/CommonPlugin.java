@@ -10,7 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.Arrays;
 import java.util.Properties;
 
-public class CommonPlugin extends JavaPlugin {
+public abstract class CommonPlugin extends JavaPlugin {
 
     protected void registerCommands(Command... commands) {
         ((CraftServer) getServer()).getCommandMap().registerAll(getName().toLowerCase(), Arrays.asList(commands));
