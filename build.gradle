@@ -20,15 +20,13 @@ allprojects {
         repositories {
             mavenLocal()
             mavenCentral()
-
             maven { url 'https://jitpack.io' }
-            maven { url = "https://repo.aikar.co/content/groups/aikar/" }
+            maven { url "https://repo.aikar.co/content/groups/aikar/" }
         }
 
         dependencies {
-            implementation 'com.zaxxer:HikariCP:3.4.5'
-
             compileOnly 'org.projectlombok:lombok:1.18.16'
+            implementation 'com.zaxxer:HikariCP:3.4.5'
             annotationProcessor 'org.projectlombok:lombok:1.18.16'
         }
 
