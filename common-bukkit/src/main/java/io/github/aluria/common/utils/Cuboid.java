@@ -9,6 +9,7 @@ import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
 import java.util.*;
 
+@SuppressWarnings("all")
 public class Cuboid implements Iterable<Block>, Cloneable, ConfigurationSerializable {
     protected final String worldName;
     protected final int x1, y1, z1;
@@ -157,11 +158,27 @@ public class Cuboid implements Iterable<Block>, Cloneable, ConfigurationSerializ
      *
      * @return Location at the centre of the Cuboid
      */
-    public Location getCenter() {
+    public Location getLiteralCenter() {
         int x1 = this.getUpperX() + 1;
         int y1 = this.getUpperY() + 1;
         int z1 = this.getUpperZ() + 1;
-        return new Location(this.getWorld(), this.getLowerX() + (x1 - this.getLowerX()) / 2.0, this.getLowerY() + (y1 - this.getLowerY()) / 2.0, this.getLowerZ() + (z1 - this.getLowerZ()) / 2.0);
+        return new Location(
+          this.getWorld(),
+          this.getLowerX() + (x1 - this.getLowerX()) / 2.0,
+          this.getLowerY() + (y1 - this.getLowerY()) / 2.0,
+          this.getLowerZ() + (z1 - this.getLowerZ()) / 2.0
+        );
+    }
+
+    public Location getCenter() {
+        int x1 = this.getUpperX() + 1;
+        int z1 = this.getUpperZ() + 1;
+        return new Location(
+          this.getWorld(),
+          this.getLowerX() + (x1 - this.getLowerX()) / 2.0,
+          this.getLowerY() + 0.5,
+          this.getLowerZ() + (z1 - this.getLowerZ()) / 2.0
+        );
     }
 
     /**
