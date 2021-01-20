@@ -1,6 +1,10 @@
 package io.github.aluria.common.plugin;
 
 import co.aikar.commands.*;
+import co.aikar.commands.CommandCompletions.AsyncCommandCompletionHandler;
+import co.aikar.commands.CommandCompletions.CommandCompletionHandler;
+import co.aikar.commands.CommandConditions.Condition;
+import co.aikar.commands.CommandConditions.ParameterCondition;
 import co.aikar.commands.contexts.ContextResolver;
 import io.github.aluria.common.utils.CommonPlugin;
 import lombok.NonNull;
@@ -46,10 +50,26 @@ public abstract class AluriaPlugin extends CommonPlugin {
         getPaperCommand().registerDependency(clazz, dependency);
     }
 
+    public void registerCondition(@NonNull String key, Condition<BukkitCommandIssuer> condition) {
+        getPaperCommand().getCommandConditions().addCondition(key, condition);
+    }
+
+    public <T> void registerCondition(@NonNull Class<T> clazz, @NonNull String key, @NonNull ParameterCondition<T, BukkitCommandExecutionContext, BukkitCommandIssuer> handler) {
+        getPaperCommand().getCommandConditions().addCondition(clazz, key, handler);
+    }
+
     public void registerDependencies(Object... dependencies) {
         for (Object dependency : dependencies) {
             registerDependency((Class<Object>) dependency.getClass(), dependency);
         }
+    }
+
+    public void registerAsyncCompletion(@NonNull String id, @NonNull AsyncCommandCompletionHandler<BukkitCommandCompletionContext> handler) {
+        getPaperCommand().getCommandCompletions().registerAsyncCompletion(id, handler);
+    }
+
+    public void registerCompletion(@NonNull String id, CommandCompletionHandler<BukkitCommandCompletionContext> handler) {
+        getPaperCommand().getCommandCompletions().registerCompletion(id, handler);
     }
 
     public <T> void registerContextResolver(Class<T> clazz, ContextResolver<T, BukkitCommandExecutionContext> context) {
