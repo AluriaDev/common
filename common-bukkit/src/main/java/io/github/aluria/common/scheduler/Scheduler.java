@@ -6,6 +6,8 @@ import io.github.aluria.common.scheduler.executor.impl.AsynchronousBukkitExecuto
 import io.github.aluria.common.scheduler.executor.impl.MainThreadBukkitExecutor;
 import org.bukkit.plugin.Plugin;
 
+import java.util.concurrent.Callable;
+
 public class Scheduler {
 
   private static final BukkitExecutor PRIMARY_THREAD_EXECUTOR = new MainThreadBukkitExecutor(BukkitCommonPlugin.getInstance());

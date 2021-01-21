@@ -1,6 +1,8 @@
 package io.github.aluria.common.scheduler.executor;
 
+import java.util.concurrent.Callable;
 import java.util.concurrent.Executor;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 public interface BukkitExecutor extends Executor {
@@ -34,6 +36,7 @@ public interface BukkitExecutor extends Executor {
   }
 
   void runTask(Runnable runnable);
+
 
   @Override
   default void execute(Runnable runnable) {

@@ -35,6 +35,10 @@ public class DelayMap {
     }
   }
 
+  public void put(String id, String cooldownName, long time, TimeUnit unit) {
+    delayMap.put(id + cooldownName, new Delay(time, unit));
+  }
+
   public void clear(String id, String cooldownName) {
     removeDelay(id, cooldownName);
   }
@@ -47,7 +51,17 @@ public class DelayMap {
   }
 
   private Delay getDelay(String id, String cooldownName) {
-    return delayMap.get(id + cooldownName);
+    Delay delay = delayMap.get(id + cooldownName);
+    if (delay == null) {
+      return null;
+    }
+
+    if (delay.isExpired()) {
+      delayMap.remove(id + cooldownName);
+      return null;
+    }
+
+    return delay;
   }
 
   public void put(String id, String cooldownName, Delay delay) {

@@ -5,4 +5,5 @@ public interface Tickable {
   void onTick();
 
   void onTickAsync();
+  
 }
