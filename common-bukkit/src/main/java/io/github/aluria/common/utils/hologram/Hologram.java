@@ -43,6 +43,19 @@ public class Hologram {
     stands.forEach(HologramArmorStand::die);
   }
 
+  public void addLines(String... lines) {
+    for (String line : lines) {
+      HologramArmorStand stand = new HologramArmorStand(location.getWorld());
+      stand.setCustomName(line);
+      stand.setCustomNameVisible(true);
+      stand.broadcastSpawnPacket();
+      stands.add(stand);
+
+
+      stand.setLocationNMS(location.getX(), location.getY() - (0.02 * stands.size()), location.getZ(), true);
+    }
+  }
+
   public void deleteLine(int index) {
     HologramArmorStand stand = this.getStand(index);
     if (stand != null) {

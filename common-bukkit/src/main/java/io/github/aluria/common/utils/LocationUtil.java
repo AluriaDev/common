@@ -37,7 +37,7 @@ public final class LocationUtil {
     return join(Arrays.asList(strings), ";");
   }
 
-  public String join(Iterable<String> pieces, String separator) {
+  private String join(Iterable<String> pieces, String separator) {
     final StringBuilder buffer = new StringBuilder();
     for (Iterator<String> iterator = pieces.iterator(); iterator.hasNext(); ) {
       buffer.append(iterator.next());

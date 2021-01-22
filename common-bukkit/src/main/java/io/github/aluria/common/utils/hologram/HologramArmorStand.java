@@ -1,6 +1,7 @@
 package io.github.aluria.common.utils.hologram;
 
 import net.minecraft.server.v1_12_R1.*;
+import org.bukkit.craftbukkit.v1_12_R1.CraftWorld;
 
 public class HologramArmorStand extends EntityArmorStand {
   public HologramArmorStand(World world) {
@@ -13,6 +14,10 @@ public class HologramArmorStand extends EntityArmorStand {
     super.setBasePlate(true);
     super.setMarker(true);
     super.collides = false;
+  }
+
+  public HologramArmorStand(org.bukkit.World world) {
+    this(((CraftWorld) world).getHandle());
   }
 
   public void spawn() {
@@ -148,10 +153,7 @@ public class HologramArmorStand extends EntityArmorStand {
 
       EntityPlayer nmsPlayer = (EntityPlayer) obj;
 
-      double distanceSquared = square(nmsPlayer.locX - super.locX) + square(nmsPlayer.locZ - super.locZ);
-      if (distanceSquared < 8192 && nmsPlayer.playerConnection != null) {
-        nmsPlayer.playerConnection.sendPacket(spawn);
-      }
+      nmsPlayer.playerConnection.sendPacket(spawn);
     }
   }
 
@@ -164,11 +166,7 @@ public class HologramArmorStand extends EntityArmorStand {
       }
 
       EntityPlayer nmsPlayer = (EntityPlayer) obj;
-
-      double distanceSquared = square(nmsPlayer.locX - super.locX) + square(nmsPlayer.locZ - super.locZ);
-      if (distanceSquared < 8192 && nmsPlayer.playerConnection != null) {
-        nmsPlayer.playerConnection.sendPacket(destroy);
-      }
+      nmsPlayer.playerConnection.sendPacket(destroy);
     }
   }
 
@@ -181,11 +179,7 @@ public class HologramArmorStand extends EntityArmorStand {
       }
 
       EntityPlayer nmsPlayer = (EntityPlayer) obj;
-
-      double distanceSquared = square(nmsPlayer.locX - super.locX) + square(nmsPlayer.locZ - super.locZ);
-      if (distanceSquared < 8192 && nmsPlayer.playerConnection != null) {
-        nmsPlayer.playerConnection.sendPacket(teleportPacket);
-      }
+      nmsPlayer.playerConnection.sendPacket(teleportPacket);
     }
   }
 

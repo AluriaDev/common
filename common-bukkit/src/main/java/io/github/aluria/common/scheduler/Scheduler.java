@@ -4,9 +4,11 @@ import io.github.aluria.common.BukkitCommonPlugin;
 import io.github.aluria.common.scheduler.executor.BukkitExecutor;
 import io.github.aluria.common.scheduler.executor.impl.AsynchronousBukkitExecutor;
 import io.github.aluria.common.scheduler.executor.impl.MainThreadBukkitExecutor;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
 import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
 
 public class Scheduler {
 
@@ -28,4 +30,9 @@ public class Scheduler {
   public static BukkitExecutor newSyncExecutor(Plugin plugin) {
     return new MainThreadBukkitExecutor(plugin);
   }
+
+  public static <V> Future<V> callSyncMethod(Callable<V> callable) {
+    return Bukkit.getScheduler().callSyncMethod(BukkitCommonPlugin.getInstance(), callable);
+  }
+
 }
