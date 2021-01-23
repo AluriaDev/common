@@ -35,4 +35,7 @@ public class Scheduler {
     return Bukkit.getScheduler().callSyncMethod(BukkitCommonPlugin.getInstance(), callable);
   }
 
+  public static void ensureMainThread(Runnable runnable) {
+    PRIMARY_THREAD_EXECUTOR.runTask(runnable);
+  }
 }

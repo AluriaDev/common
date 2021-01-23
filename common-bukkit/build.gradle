@@ -11,11 +11,15 @@ plugins {
 repositories {
     mavenCentral()
     maven { url 'https://papermc.io/repo/repository/maven-public/' }
+    maven {url 'https://repo.codemc.io/repository/maven-public'}
+
 }
 
 dependencies {
     compileOnly 'org.spigotmc:spigot:1.12.2-R0.1-SNAPSHOT'
     compileOnly 'com.destroystokyo.paper:paper-api:1.12.2-R0.1-SNAPSHOT'
+    compileOnly 'com.gmail.filoghost.holographicdisplays:holographicdisplays-api:2.4.0'
+
     implementation 'co.aikar:acf-paper:0.5.0-SNAPSHOT'
     implementation project(':common-shared')
     api project(':common-shared')
