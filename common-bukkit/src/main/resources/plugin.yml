@@ -1,4 +1,5 @@
 name: Common-Bukkit
 main: io.github.aluria.common.BukkitCommonPlugin
-version: 1.0.0
-authors: [ Kurpfy ]
+version: 1.12.2.1
+authors: [Kurpfy, Sasuked]
+softdepend: [HolographicDisplays , ProtocolLib]
