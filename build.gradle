@@ -4,7 +4,7 @@ plugins {
 }
 
 def projectGroup = 'io.github.aluria.common'
-def projectVersion = '1.12.2.1-SNAPSHOT'
+def projectVersion = '1.12.2.2-SNAPSHOT'
 def projectSourceCompatibility = 1.8
 
 group projectGroup
